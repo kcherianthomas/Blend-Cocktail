@@ -28,19 +28,19 @@ Video URL: https://www.youtube.com/watch?v=P_ZrDXclGNA
 
 
 
-Home Screen :  
+Home :  
 ![image](https://user-images.githubusercontent.com/57378953/120527135-99a6e480-c39f-11eb-85dd-a6062fbf144d.png)
 
-Search Screen :
+Search :
 ![image](https://user-images.githubusercontent.com/57378953/120527260-c0fdb180-c39f-11eb-84d2-6bf9465157cb.png)
 
-Cocktail Details Page :
+Cocktail Details :
 ![image](https://user-images.githubusercontent.com/57378953/120526863-52b8ef00-c39f-11eb-87d4-d3eb5485fb08.png)
 
-Upload Custom cocktails Page:
+Create Custom Cocktail :
 ![image](https://user-images.githubusercontent.com/57378953/120527361-dd99e980-c39f-11eb-99e8-92bff356612e.png)
 
-User Preferences Page :
+User Preference :
 ![image](https://user-images.githubusercontent.com/57378953/120527479-fb674e80-c39f-11eb-89b8-74cc7294a46d.png)
 
 Login :
