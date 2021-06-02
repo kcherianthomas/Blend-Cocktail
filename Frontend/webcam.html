@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>User Preference</title>
+    <script language="JavaScript" type="text/javascript"
+        src="https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js">
+        </script>
+    <script src="assets/js/verifier.js"></script>
+    <script src="assets/js/userprofile.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/Team-Grid.css">
+    <link rel="stylesheet" href="assets/css/user preferences.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="text/javascript" src="assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
+    <script>
+        // code to check if face rekognition required
+        sdk = apigClientFactory.newClient();
+        var params = { 'userid': localStorage.getItem("cocktailemailid") }
+        var body = {}
+        var additionalParams = {
+            headers: {
+            }
+        }
+        sdk.userpicGet(params, body, additionalParams).then(function (response) {
+            console.log(response.data.body);
+            res = JSON.parse(response.data.body)
+            if (res != "Required") {
+                location.href = "https://dbboxdskgfqfr.cloudfront.net/index.html"
+            }
+
+        }).catch(function (result) {
+            alert('Something went wrong. Please refresh');
+        });
+
+    </script>
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+</head>
+
+<body
+    style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url(&quot;assets/img/bg1.jpeg&quot;);background-size: auto, cover;">
+    <h1 class="text-center text-white d-none d-lg-block site-heading" style="margin: 20px 0px;"><span
+            class="site-heading-lower">Blend COCKTAIL</span></h1>
+    <br><br>
+
+
+    <div style="display: flex;justify-content: center;">
+        <strong style="font-size: 32px; color: #b6b6b6;">Please start camera and authenticate&nbsp;&nbsp;&nbsp;</strong>
+        <button type="button" onclick="startcamera()" class="btn btn-primary" style="margin: 5px;">
+            Start camera
+        </button>
+        <button type="button" onclick="takephoto()" class="btn btn-primary" style="margin: 5px;">
+            Take photo and autheticate
+        </button>
+        
+        
+    </div>
+    <br><br>
+    <div style="display: flex;justify-content: center;">
+        <video id="webcam" autoplay playsinline width="640" height="480"></video>
+        <canvas id="canvas" class="d-none"></canvas>
+        <audio id="snapSound" src="assets/audio/camera.wav" preload="auto"></audio>
+    </div>
+
+
+    <script>
+        const webcamElement = document.getElementById('webcam');
+        const canvasElement = document.getElementById('canvas');
+        const snapSoundElement = document.getElementById('snapSound');
+        var webcam;
+
+        function startcamera() {
+            webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+            webcam.start()
+                .then(result => {
+                    console.log("webcam started");
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+        }
+        function takephoto() {
+            let picture = webcam.snap();
+            base64imagetosend = picture.split(",")[1];
+            console.log(base64imagetosend);
+            webcam.stop()
+            sdk = apigClientFactory.newClient();
+            var params = {};
+            var body = { 'userid': localStorage.getItem("cocktailemailid"), 'userimage': base64imagetosend }
+            //var body = { 'userid': 'kcherianthomas2011@gmail.com', 'userimage': base64imagetosend }
+            var additionalParams = {
+                headers: {
+                }
+            }
+            sdk.authenticatepicsPost(params, body, additionalParams).then(function (response) {
+                console.log(response);
+                res = JSON.parse(response.data.body)
+                if (res == "Matched") {
+                    location.href = "https://dbboxdskgfqfr.cloudfront.net/index.html"
+                } else {
+                    alert("Face authorization did not match")
+                    location.href = "https://cocktail.auth.us-east-1.amazoncognito.com/logout?client_id=10apj9lf45ih1ar5klh9454qsg&logout_uri=https://dbboxdskgfqfr.cloudfront.net/logout.html"
+                }
+            }).catch(function (result) {
+                alert('Something went wrong. Please refresh');
+            });
+        }
+
+        
+
+    </script>
+
+
+
+</body>
+
+</html>

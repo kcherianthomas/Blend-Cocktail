@@ -1,0 +1,192 @@
+.ingredients{
+  display: flex;
+  align-items: start;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 0;
+  width: 49%;
+}
+
+.ingredients-header-title, .directions-header-title {
+  font-family: GTHaptik,Helvetica,Arial,Sans-serif;
+  font-size: 1.4375rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: .9375rem;
+  border-top: .1875rem solid #278090;
+  padding-top: .9375rem;
+}
+
+.ingredient-title, .direction-title {
+  font-family: GTHaptik,Helvetica,Arial,Sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: .9375rem 0 .625rem;
+}
+
+.ingredient-item, .direction-lists li, .recipe-tips {
+  padding-bottom: .5rem;
+}
+
+.ingredient-item {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.tm-section-1-r {
+  padding: 50px 40px;
+  width: 70% !important;
+  max-height: max-content !important;
+}
+
+.tm-bg-color-8 {
+  background-color: #ff7800ab !important;
+}
+
+
+.addtxt {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-size: 13px !important;
+  width: 98% !important;
+  background-color: #e5e8ed !important;
+  font-weight: 500 !important;
+}
+
+.container1 {
+  background-color: #bd5b04;
+  width: 98%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.form-control:focus {
+  color: #000
+}
+.second {
+  width: 98%;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 10px 10px 5px #aaaaaa
+}
+
+.text1 {
+  font-size: 13px;
+  font-weight: 500 !important;
+  color: #56575b
+}
+
+.text2 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 6px;
+  color: #56575b
+}
+
+.text3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 4px;
+  color: #828386
+}
+
+.text3o {
+  color: #00a5f4
+}
+
+.text4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #828386
+}
+
+.text4i {
+  color: #00a5f4
+}
+
+.text4o {
+  color: white
+}
+
+.thumbup {
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 5px
+}
+
+.thumbupo {
+  color: #17a2b8
+}
+
+.comment-header-title{
+  font-family: GTHaptik,Helvetica,Arial,Sans-serif;
+  font-size: 1.4375rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: .9375rem;
+  padding-top: 20px;
+  padding-left: 20px;
+  text-align: center;
+}
+
+body{
+  background-color: #25274d !;
+}
+.contact{
+  padding: 4%;
+  height: 400px;
+}
+.col-md-3{
+  background: #ff9b00;
+  padding: 4%;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+  margin-top:10%;
+}
+.contact-info img{
+  margin-bottom: 15%;
+}
+.contact-info h2{
+  margin-bottom: 10%;
+}
+.col-md-9{
+  background: #fff;
+  padding: 3%;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.contact-form label{
+  font-weight:600;
+}
+.contact-form button{
+  background: #25274d;
+  color: #fff;
+  font-weight: 600;
+  width: 25%;
+}
+.contact-form button:focus{
+  box-shadow:none;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: white !important;
+  background-clip: padding-box;
+  border: 1px solid #999A9B !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home</title>
+    <!--<script language="JavaScript" type="text/javascript"
+        src="https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js">
+        </script>
+    <script src="assets/js/verifier.js"></script>
+    <script src="assets/js/userprofile.js"></script>-->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/Team-Grid.css">
+    <script type="text/javascript" src="assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="getRecommendations()"
+    style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url(&quot;assets/img/bg1.jpeg&quot;);background-size: auto, cover;">
+    <h1 class="text-center text-white d-none d-lg-block site-heading" style="margin: 20px 0px;"><span
+            class="site-heading-lower">Blend Cocktail</span></h1>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark py-lg-4" id="mainNav">
+        <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Menu</a><button
+                data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="addcustomrecipee.html">Create custom
+                            cocktail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="userprofile.html">user preference</a></li>
+                    <li onclick="logout()" class="nav-item"><a class="nav-link" href="#">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <br><br>
+    <div class="container">
+        <strong style="font-size: 32px; color: #b6b6b6;">Your personalized recommendations:</strong>
+        <div class='row' id='recommendation'>
+
+            <!--<div class='col-sm-3'>
+                <a href='ingredient.php?c=1' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/rvwrvv1468877323.jpg' width='95%' />
+                    <figcaption><br>Vodka</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=2' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg' width='95%' />
+                    <figcaption><br>Gin</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=3' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/yyrwty1468877498.jpg' width='95%' />
+                    <figcaption><br>Rum</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=4' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/ywxwqs1461867097.jpg	' width='95%' />
+                    <figcaption><br>Tequila</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=4' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/ywxwqs1461867097.jpg	' width='95%' />
+                    <figcaption><br>Tequila</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=4' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/ywxwqs1461867097.jpg	' width='95%' />
+                    <figcaption><br>Tequila</figcaption>
+                </figure>
+                </a>
+            </div>
+            <div class='col-sm-3'>
+                <a href='ingredient.php?c=4' />
+                <figure>
+                    <img src='http://www.thecocktaildb.com/images/media/drink/ywxwqs1461867097.jpg	' width='95%' />
+                    <figcaption><br>Tequila</figcaption>
+                </figure>
+                </a>
+            </div> -->
+        </div>
+    </div>
+    
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
+</body>
+
+</html>

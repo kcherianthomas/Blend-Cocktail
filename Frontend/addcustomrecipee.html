@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Custom Recipee</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/Team-Grid.css">
+    <link rel="stylesheet" href="assets/css/add custom recipee.css">
+    <script type="text/javascript" src="assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/add custom recipee.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body class="text-left"
+    style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url(&quot;assets/img/bg1.jpeg&quot;);background-size: auto, cover;">
+    <h1 class="text-center text-white d-none d-lg-block site-heading" style="margin: 20px 0px;"><span
+            class="site-heading-lower">Blend COCKTAIL</span></h1>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark py-lg-4" id="mainNav">
+        <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Menu</a><button
+                data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="addcustomrecipee.html">Create custom
+                            cocktail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="userprofile.html">user preference&nbsp;</a></li>
+                    <li onclick="logout()" class="nav-item"><a class="nav-link" href="#">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-5">
+                <!--<div class="contact-info">
+                    <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                    <h2>Contact Us</h2>
+                    <h4>We would love to hear from you !</h4>
+                </div> -->
+
+
+                <!-- Upload image input-->
+                <label style="font-size: 32px; color: #b6b6b6;" for="customcoktailcategory">Cocktail
+                    Image<span class="requiredclass">*</span></label>
+                <div class="input-group mb-3 px-2 bg-white shadow-sm" style=" border-radius: .25rem;">
+                    <input id="upload" type="file" onchange="readURL(this);" class="form-control">
+                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Upload Cocktail
+                        Image</label>
+                    <div class="input-group-append">
+                        <label for="upload" class="btn btn-light m-0 px-4"> <i
+                                class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                class="text-uppercase font-weight-bold text-muted">Upload Image</small></label>
+                    </div>
+                </div>
+
+                <!-- Uploaded image area-->
+                <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+                        class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+
+            </div>
+            <div class="col-md-7">
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;"
+                            for="customcoktailname">Cocktail Name<span class="requiredclass">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="customcoktailname"
+                                placeholder="Enter Cocktail Name" name="customcoktailname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;"
+                            for="customcoktailcategory">Cocktail Category<span class="requiredclass">*</span></label>
+                        <div class="col-sm-10">
+                            <select name="cars" value="Cocktail" class="form-control" id="customcoktailcategory">
+                                <option value="Cocktail">Cocktail</option>
+                                <option value="Shot">Shot</option>
+                                <option value="Beer">Beer</option>
+                                <option value="Ordinary Drink">Ordinary Drink</option>
+                                <option value="Homemade Liqueur">Homemade Liqueur</option>
+                                <option value="Other/Unknown">Other/Unknown</option>
+                                <option value="Punch / Party Drink">Punch / Party Drink</option>
+                                <option value="Coffee / Tea">Coffee / Tea</option>
+                                <option value="Soft Drink / Soda">Soft Drink / Soda</option>
+                                <option value="Cocoa">Cocoa</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;"
+                            for="customcoktailtype">Cocktail Type<span class="requiredclass">*</span></label>
+                        <div class="col-sm-10">
+                            <select name="cars" value="Alcoholic" class="form-control" id="customcoktailtype">
+                                <option value="Alcoholic">Alcoholic</option>
+                                <option value="Non alcoholic">Non alcoholic</option>
+                                <option value="Optional alcohol">Optional alcohol</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;"
+                            for="customcoktailname">Glass Type<span class="requiredclass">*</span></label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="customcoktailglasstype"
+                                placeholder="Enter Cocktail glass type" name="customcoktailglasstype">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;">Ingredient and
+                            Measurement<span class="requiredclass">*</span></label>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient1"
+                                placeholder="Ingredient 1">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement1"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="Ingredientdiv2" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient2"
+                                placeholder="Ingredient 2">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement2"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="Ingredientdiv3" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient3"
+                                placeholder="Ingredient 3">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement3"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="Ingredientdiv4" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient4"
+                                placeholder="Ingredient 4">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement4"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="Ingredientdiv5" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient5"
+                                placeholder="Ingredient 5">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement5"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" id="Ingredientdiv6" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient6"
+                                placeholder="Ingredient 6">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement6"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv7" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient7"
+                                placeholder="Ingredient 7">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement7"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv8" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient8"
+                                placeholder="Ingredient 8">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement8"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv9" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient9"
+                                placeholder="Ingredient 9">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement9"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv10" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient10"
+                                placeholder="Ingredient 10">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement10"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv11" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient11"
+                                placeholder="Ingredient 11">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement11"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv12" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient12"
+                                placeholder="Ingredient 12">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement12"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv13" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient13"
+                                placeholder="Ingredient 13">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement13"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv14" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient14"
+                                placeholder="Ingredient 14">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement14"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+                    <div class="form-group" id="Ingredientdiv15" style="display:none;">
+                        <br>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailingredient15"
+                                placeholder="Ingredient 15">
+                        </div>
+                        <div class="col-sm-5" style="float: left;">
+                            <input type="text" class="form-control" id="customcoktailmeasurement15"
+                                placeholder="Measurement">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button id="add-more" style="float:right;" onclick="addIngredient()" name="add-more"
+                                class="btn btn-primary">Add Ingredient</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label style="font-size: 32px; color: #b6b6b6;padding-left: 15px;"
+                        for="customcoktailinstruction">Instruction<span class="requiredclass">*</span></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="6" id="customcoktailinstruction"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" onclick="submitcustomcocktail()" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal" id="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modaltitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modaltext">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

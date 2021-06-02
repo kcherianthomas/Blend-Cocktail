@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/cocktail details.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/Team-Grid.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="text/javascript" src="assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
+    <link href="assets/css/templatemo-comparto.css" rel="stylesheet" />
+    <script src="assets/js/cocktail details.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="getCocktailDetails()"
+    style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url(&quot;assets/img/bg1.jpeg&quot;);background-size: auto, cover;">
+
+    <h1 class="text-center text-white d-none d-lg-block site-heading" style="margin: 20px 0px;"><span
+            class="site-heading-lower">Blend Cocktail</span></h1>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark py-lg-4" id="mainNav">
+        <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">Menu</a><button
+                data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="addcustomrecipee.html">Create custom
+                            cocktail</a></li>
+                    <li class="nav-item"><a class="nav-link" href="userprofile.html">user preference</a></li>
+                    <li onclick="logout()" class="nav-item"><a class="nav-link" href="#">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+
+    <div class="tm-row tm-about-row">
+        <div class="tm-section-1-l">
+            <img id="cocktailDetailsImage" src="https://miro.medium.com/max/1080/0*DqHGYPBA-ANwsma2.gif"
+                alt="About image" class="tm-img-responsive">
+        </div>
+        <div class="tm-section-1-r tm-bg-color-8">
+            <h1 id="cocktailDetailName" style="text-align: center;padding-bottom: 15px;color: #212529;font-size: 60px;">
+            </h1>
+            <div>
+                <div class="ingredients">
+                    <div class="ingredients-header">
+                        <div class="ingredients-header-title" role="heading" aria-level="2">Category</div>
+                    </div>
+                    <div class="ingredients-body">
+                        <div class="ingredient-lists">
+                            <div class="ingredient-item">
+                                <span id="cocktailDetailCategory" class="ingredient-amount">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ingredients">
+                    <div class="ingredients-header">
+                        <div class="ingredients-header-title" role="heading" aria-level="2">Type</div>
+                    </div>
+                    <div class="ingredients-body">
+                        <div class="ingredient-lists">
+                            <div class="ingredient-item">
+                                <span id="cocktailDetailType" class="ingredient-amount">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="ingredients">
+                    <div class="ingredients-header">
+                        <div class="ingredients-header-title" role="heading" aria-level="2">Glass Type</div>
+                    </div>
+                    <div class="ingredients-body">
+                        <div class="ingredient-lists">
+                            <div class="ingredient-item">
+                                <span id="cocktailDetailGlassType" class="ingredient-amount">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <div class="ingredients">
+                    <div class="ingredients-header">
+                        <div class="ingredients-header-title" role="heading" aria-level="2">Ingredients</div>
+                    </div>
+                    <div class="ingredients-body">
+                        <div id="cocktailDetailIngredientWithMeasurement" class="ingredient-lists">
+                        </div>
+                    </div>
+                </div>
+                <div class="ingredients">
+                    <div class="ingredients-header">
+                        <div class="ingredients-header-title" role="heading" aria-level="2">Instruction</div>
+                    </div>
+                    <div class="directions-body">
+                        <div class="direction-section direction-section-1">
+                            <div class="direction-lists">
+                                <ol id="cocktailDetailInstruction">
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="container1 ">
+        <div class="comment-header-title" role="heading" aria-level="2">Comments</div>
+        <div class="d-flex justify-content-center pt-3 pb-2" style="padding-left: 14px !important;
+        padding-right: 14px !important;">
+            <input id="addcomment" type="text" name="text" placeholder="Type your comment" class="form-control addtxt">
+            <div class="input-group-append">
+                <button type="button" onclick="submitcomment()" class="btn btn-secondary"
+                    style="padding: revert;color: #0ca1b0;">
+                    <i class="fa fa-comment"></i>
+                </button>
+            </div>
+        </div>
+        <div id="displaycomment">
+        </div>
+
+        <br>
+    </div>
+
+
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
