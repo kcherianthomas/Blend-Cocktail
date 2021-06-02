@@ -44,6 +44,8 @@ User Preference :
 ![image](https://user-images.githubusercontent.com/57378953/120527479-fb674e80-c39f-11eb-89b8-74cc7294a46d.png)
 
 Login :
+![image](https://user-images.githubusercontent.com/57378953/120528062-a415ae00-c3a0-11eb-9994-d1e190fb2970.png)
+
 
 FaceID Authentication:  
 ![image](https://user-images.githubusercontent.com/57378953/120527089-8e53b900-c39f-11eb-8260-1fef0df05d8e.png)
