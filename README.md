@@ -14,7 +14,7 @@ Code Features :
 1. Highly scalable backend
 2. Serverless Compute using AWS lambda
 3. Responsive frontend using bootstrap
-4. Continous Integration and deployment using AWS Code pipeline 
+4. Continous Integration and deployment(DevOps) using AWS Code pipeline 
 
 
 System Design :
