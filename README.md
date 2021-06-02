@@ -1,6 +1,6 @@
 # Blend-Cocktail
 
-Blend cocktail is a  is a cocktail recipe recommendation web application.
+Blend cocktail is a cocktail recipe recommendation web application.
 
 App Features :
 1. Secure login using Cognito and Oauth2.  
